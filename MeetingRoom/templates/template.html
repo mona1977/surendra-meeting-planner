@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style>
+    @page {
+        size: a4;
+
+        @frame mybody {
+            left: 50pt;
+            width: 512pt;
+            top: 50pt;
+            height: 692pt;
+
+
+        }
+
+
+
+    }
+
+a {
+  color: #5D6975;
+  text-decoration: underline;
+}
+
+body {
+  position: relative;
+  width: 556px;
+
+  margin: 0 auto;
+  color: #001028;
+  background: #FFFFFF;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-family: Arial;
+}
+
+div {
+  padding: 0px;
+  margin: 0px;
+}
+
+
+#logo {
+  text-align: right;
+
+}
+
+#logo img {
+  width: 90px;
+  margin-bottom: 90px;
+}
+
+h1 {
+
+  color: #5D6975;
+  font-size: 24px;
+
+  font-weight: normal;
+  text-align: center;
+  margin: 0 0 20px 0;
+
+}
+
+#projecter {
+  text-align: left;
+  padding: 50px 0 0 0;
+ /*  border: 1px solid  blue;
+  */
+}
+
+#projecter span {
+  color: #5D6975;
+  /* text-align: right; */
+
+  margin-right: 10px;
+  display: inline-block;
+  font-size: 0.8em;
+}
+
+#company {
+
+  text-align: right;
+  margin-right: 10px;
+  /* border: 1px solid  green;
+   */
+}
+
+#myheader, #headertable {
+  padding-bottom: 10px;
+  /* width: 100%; */
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 10px 0 10px 0;
+}
+
+
+#mytable {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-top: 20px;
+}
+
+#mytable tr:nth-child(2n-1) td {
+  color: #F5F5F5;
+}
+
+#mytable th,
+#mytable td {
+  text-align: center;
+}
+
+#mytable th {
+  padding: 5px 20px;
+  color: #5D6975;
+  border-bottom: 1px solid #C1CED9;
+  white-space: nowrap;
+  font-weight: normal;
+}
+
+
+
+#mytable td.unit,
+#mytable td.qty,
+#mytable td.total {
+  padding: 5px 0px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+table > tbody > td.service,
+table > tbody > td.desc {
+  padding: 10px 0px 0px 0px;
+
+  text-align: center
+}
+
+#mytable td.grand {
+  border-top: 1px solid #5D6975;
+}
+
+#notices .notice {
+  color: #5D6975;
+  font-size: 1.2em;
+}
+
+footer {
+  color: #5D6975;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #C1CED9;
+  padding: 8px 0;
+  text-align: center;
+}
+
+
+
+
+
+</style>
+
+</head>
+<body id="mybody">
+    <table id="myheader" >
+      <tr>
+        <td>
+            <h1> Invoice Number {{ invoice_number }}</h1>
+        </td>
+      </tr>
+      <tr>
+        <td id="logo">
+          <img src="https://surendra.amazonaws.com/Logo.jpg" />
+        </td>
+
+      </tr>
+      <tr id="headertable">
+        <td>
+          <table>
+            <tr id="company">
+              <td>
+                  <div>Planner</div>
+                  <div>204, Platinum Square, Viman Nagar, Opposite WNS, <br />Pune- 411014</div>
+                  <div><span>GST No: </span>{{ gst }}</div>
+                  <div><a href="mailto:company@example.com">surendra@gmail.com</a></div>
+              </td>
+
+            </tr>
+            <tr>
+              <td id="projecter">
+                  <div><span>Bill To:</span> </div>
+                  <div>{{ company }}</div>
+                  <div>{{ company_address }}</div>
+                  <div><span>GST No: </span>{{ gst }}</div>
+                  <div><a href="mailto:company@example.com">company@example.com</a></div>
+                  <div><span>DATE</span> {{ today_date }}</div>
+                  <div><span>DUE DATE</span> {{ due_date }}</div>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <main>
+      <table id="mytable">
+        <thead>
+          <tr>
+            <th class="service">SERVICE</th>
+<!--            <th class="desc">DESCRIPTION</th>-->
+            <th>PRICE</th>
+            <th>QTY</th>
+            <th>TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service">Design</td>
+<!--            <td class="desc">Creating a recognizable design solution based on the company's existing visual identity</td>-->
+            <td class="unit">&#8377; {{ hourly_rate }}</td>
+            <td class="qty">{{ hours }}</td>
+            <td class="total">&#8377; {{ total_amount }}</td>
+          </tr>
+
+          <tr>
+            <td colspan="2"></td>
+            <td>SUBTOTAL</td>
+            <td class="total">&#x20B9; 5,200.00</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td>CGST (2.5%)</td> 
+            <td class="total">
+                <img src="images/image5.png"  />
+                <span> &#x20b9; </span> <span> &#8377;</span>
+                <i class="fa fa-inr"></i>
+
+                $5,200.00</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td>SGST (2.5%)</td>
+            <td class="total">$5,200.00</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td>Total TAX</td>
+            <td class="total">$5,200.00</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="grand total">GRAND TOTAL</td>
+            <td class="grand total">$6,500.00</td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="notices">
+        <div>NOTICE:</div>
+        <div>Banking Details: <br />
+             Name of the company: surendra <br /> 
+            Details: delhi <br />
+            Account Number: 52458555 <br />
+            IFSC Code: iCIC855 .</div>
+      </div>
+    </main>
+    <footer>2
+      Invoice was created on a computer and is valid without the signature and seal.
+    </footer>
+  </body>
+
+</html>

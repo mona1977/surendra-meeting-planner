@@ -1,0 +1,20 @@
+
+<form method="POST" action=".">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <button type="submit">Send</button>
+
+    {% if form.errors %}
+        {{ form.errors }}
+    {% endif %}
+</form>
+
+
+<h1>{{ datenow }}</h1>
+{% for q in qs %}
+        <h1>{{ q.company }} </h1>
+        <p> {{ q.start }}   {{ q.end }}</p>
+    <!--<p> {{ q.end }}</p>-->
+    <!--<h1> {{ q.month }}</h1>-->
+{% endfor %}
